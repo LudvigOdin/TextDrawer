@@ -195,9 +195,20 @@ extension TextDrawer: UIGestureRecognizerDelegate {
     }
     
     func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        textEditView.textEntry = text
-        textEditView.isEditing = true
-        textEditView.hidden = false
+        if textEditView.hidden
+        {
+            textEditView.isEditing = true
+            textEditView.hidden = false
+        }
+        else
+        {
+            textEditView.isEditing = false
+            textEditView.hidden = true
+        }
+        if text.isEmpty
+        {
+            textEditView.textEntry = text
+        }
     }
     
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
